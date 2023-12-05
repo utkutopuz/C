@@ -96,14 +96,14 @@ void oyuncuMove() {
         scanf("%d", &y);
         y--;
 
-        if (Tahta[x][y] != ' ') {
+        if (Tahta[x][y] != ' ') {//ilgili kısım boş mu
             printf("Geçersiz hamle!\n");
         } else {
-            Tahta[x][y] = OYUNCU;
+            Tahta[x][y] = OYUNCU;//oyuncu isteği üzerine olan kısmı doldur
             break;
         }
 
-    } while (Tahta[x][y] != ' ');
+    } while (Tahta[x][y] != ' ');//boş değil ise
 }
 
 void rakipMove() {
@@ -113,17 +113,18 @@ void rakipMove() {
     if (bosKontrol() > 0) {
         do {
             x = rand() % 3;
-            y = rand() % 3;
+            y = rand() % 3;//rastgele atama
 
         } while (Tahta[x][y] != ' ');
 
-        Tahta[x][y] = RAKIP;
+        Tahta[x][y] = RAKIP;//rakibin hamlesi
     } else {
         printKazanan(' ');
     }
 }
 
 char kazananKontrol() {
+    //kazanma senaryolarını içerir
     for (int i = 0; i < 3; i++) {
         if (Tahta[i][0] == Tahta[i][1] && Tahta[i][0] == Tahta[i][2]) {
             return Tahta[i][0];
